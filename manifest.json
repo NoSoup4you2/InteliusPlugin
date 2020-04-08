@@ -1,0 +1,16 @@
+{
+    "name": "Intelius Parser",
+    "version": "0.1",
+    "description": "Intelius Parser to extract Phone and Emails",
+    "icons": { "16": "intelius2.png",
+        "48": "intelius2.png",
+       "128": "intelius2.png" },
+
+    
+    "browser_action": {
+      
+        "default_popup": "popup.html"
+      },
+      "permissions": ["tabs", "<all_urls>", "clibboardRead", "clipboardWrite", "alarms", "notifications"],
+    "manifest_version": 2
+  }
