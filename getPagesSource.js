@@ -25,7 +25,11 @@ function DOMtoString(document_root) {
         }
         node = node.nextSibling;
     }
-    return JSON.stringify(extractInfo(html));
+
+    var parsedData = JSON.stringify(extractInfo(html))
+    copyToClipboard(parsedData)
+    alert(parsedData);
+    return parsedData;
 }
 
 // html argument is expected to be a javascript string
@@ -53,6 +57,15 @@ function extractInfo(html) {
     })
     return { emails: emails, phones: phonesWithTypesAndRemarks }
 }
+
+function copyToClipboard(text) {
+    var emailphone = document.createElement("textarea");
+    document.body.appendChild(emailphone);
+    emailphone.value = text;
+    emailphone.select();
+    document.execCommand("copy");
+}
+
 chrome.runtime.sendMessage({
     action: "getSource",
     source: DOMtoString(document)
